@@ -2,6 +2,10 @@ package main
 
 import (
 	"fmt"
+	"net/http"
+
+	"github.com/tim-mhn/module-1/controllers"
+	"github.com/tim-mhn/module-1/models"
 )
 
 const (
@@ -168,41 +172,60 @@ func main() {
 	// }
 
 	// loop example 2
-	for i := 0; i < 5; i++ {
-		println(i)
-	}
+	// for i := 0; i < 5; i++ {
+	// 	println(i)
+	// }
 
 	// infinite loop
-	var i int
-	for {
-		if i == 5 {
-			break
+	// var i int
+	// for {
+	// 	if i == 5 {
+	// 		break
 
-		}
-		i++
+	// 	}
+	// 	i++
 
-		fmt.Println(i)
-	}
+	// 	fmt.Println(i)
+	// }
 
 	// loop over array / slice
-	arr := []int{10, 20, 10, 25}
-	for i, v := range arr {
-		fmt.Println(i, v)
-	}
+	// arr := []int{10, 20, 10, 25}
+	// for i, v := range arr {
+	// 	fmt.Println(i, v)
+	// }
 
 	// loop over map
-	names := map[int]string{
-		1: "bob",
-		3: "tim",
-		0: "jack",
+	// names := map[int]string{
+	// 	1: "bob",
+	// 	3: "tim",
+	// 	0: "jack",
+	// }
+
+	// for k, v := range names {
+	// 	fmt.Println(k, v)
+	// }
+
+	// for _, name := range names {
+	// 	fmt.Println(name)
+	// }
+	// panics
+	// panic("Some serious happened !")
+
+	u1 := models.User{
+		FirstName: "tim",
+		LastName:  "mhn",
 	}
 
-	for k, v := range names {
-		fmt.Println(k, v)
+	u2 := models.User{
+		FirstName: "mike",
+		LastName:  "smith",
 	}
 
-	for _, name := range names {
-		fmt.Println(name)
-	}
+	models.AddUser(models.User{FirstName: "bob", LastName: "hudson"})
+	models.AddUser(u1)
+	models.AddUser(u2)
+
+	controllers.RegisterControllers()
+	http.ListenAndServe(":3000", nil)
 
 }
