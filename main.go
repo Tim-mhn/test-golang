@@ -2,14 +2,40 @@ package main
 
 import (
 	"fmt"
+	"net/http"
 
-	"github.com/tim-mhn/module-1/models"
+	"github.com/tim-mhn/module-1/controllers"
 )
 
 const (
 	first = iota
 	two   = iota
 )
+
+func startServer() {
+	fmt.Println("Starting ...")
+}
+
+func log(i int) {
+	fmt.Println(i)
+}
+
+func sum(i, j int) {
+	fmt.Println(i + j)
+}
+
+func multiply(i, k int) int {
+	return i * k
+}
+
+func sumAll(numbers ...int) int {
+	var sum = 0
+	for _, v := range numbers {
+		sum += v
+	}
+
+	return sum
+}
 
 func main() {
 
@@ -107,12 +133,29 @@ func main() {
 	// fmt.Println(u)
 	// fmt.Println(u2)
 
-	u := models.User{
-		Id:        1,
-		FirstName: "tim",
-		LastName:  "mhn",
-	}
+	// u := models.User{
+	// 	Id:        1,
+	// 	FirstName: "tim",
+	// 	LastName:  "mhn",
+	// }
 
-	fmt.Println(u)
+	// fmt.Println(u)
+
+	// startServer()
+	// log(1)
+	// sum(2, 3)
+
+	// fmt.Println(multiply(4, 4))
+
+	// numbers := []int{1, 2, 4}
+	// fmt.Println(sumAll(numbers...))
+	// fmt.Println(sumAll(1, 15))
+
+	// models.AddUser(u)
+	// var users = models.GetUsers()
+	// fmt.Println(*users[0])
+
+	controllers.RegisterControllers()
+	http.ListenAndServe(":3000", nil)
 
 }
