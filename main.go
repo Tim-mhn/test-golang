@@ -2,9 +2,6 @@ package main
 
 import (
 	"fmt"
-	"net/http"
-
-	"github.com/tim-mhn/module-1/controllers"
 )
 
 const (
@@ -155,7 +152,57 @@ func main() {
 	// var users = models.GetUsers()
 	// fmt.Println(*users[0])
 
-	controllers.RegisterControllers()
-	http.ListenAndServe(":3000", nil)
+	// controllers.RegisterControllers()
+	// http.ListenAndServe(":3000", nil)
+
+	// loop example 1
+	// var i int = 0
+	// for i < 5 {
+	// 	fmt.Println(i)
+	// 	i++
+	// 	if i == 3 {
+	// 		continue
+	// 	}
+
+	// 	println("continuing ..")
+	// }
+
+	// loop example 2
+	for i := 0; i < 5; i++ {
+		println(i)
+	}
+
+	// infinite loop
+	var i int
+	for {
+		if i == 5 {
+			break
+
+		}
+		i++
+
+		fmt.Println(i)
+	}
+
+	// loop over array / slice
+	arr := []int{10, 20, 10, 25}
+	for i, v := range arr {
+		fmt.Println(i, v)
+	}
+
+	// loop over map
+	names := map[int]string{
+		1: "bob",
+		3: "tim",
+		0: "jack",
+	}
+
+	for k, v := range names {
+		fmt.Println(k, v)
+	}
+
+	for _, name := range names {
+		fmt.Println(name)
+	}
 
 }
