@@ -1,0 +1,6 @@
+INFO - Trying to connect to application
+ERROR - Could not connect to application. Server cannot be reached
+INFO - Trying to connect again
+INFO - Successful connection. Server running on port 3000
+INFO - Trying to fetch user yyyy information
+ERROR - User yyyy does not exist in database
